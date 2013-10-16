@@ -24,11 +24,12 @@ while True:
 
   while True:
     print(blank)
-    print(secret)
+    print('You have guessed: %s'%guesslist)
+    print('You have %s strikes left.'%(6-failcount))
     guess=input("Guess a letter: ").lower()
 
     if len(guess)!=1:
-      print('Only one guess at a time.  And:')
+      print('One guess at a time.  And:')
       
     if not guess.isalpha():
       print('This needs to be a letter dipwad.')
@@ -54,6 +55,18 @@ while True:
         print('Nope! '+str(6-failcount)+' strikes left.')
         failcount+=1
         guesslist+=guess
+      if failcount>0:
+        print('  x x  ')
+      if failcount>1:
+        print('   n  ')
+      if failcount>2:
+        print(' \\_|_/ ')
+      if failcount>3:
+        print('   |  ')
+      if failcount>4:
+        print('  / \\ ')
+      if failcount>5:
+        print(' d   b ')
       if failcount>6:
         print('GAME OVER....the secret word was: '+secret+'.')
         break
