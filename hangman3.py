@@ -23,6 +23,7 @@ while True:
   blank='*'*(len(secret)-1)
 
   while True:
+    print(('\n')*5)
     print(blank)
     print('You have guessed: %s'%guesslist)
     print('You have %s strikes left.'%(6-failcount))
@@ -52,24 +53,40 @@ while True:
       if guess in guesslist:
         print('you already guessed '+guess+'.')
       else:   
-        print('Nope! '+str(6-failcount)+' strikes left.')
+        print('Nope! '+str(5-failcount)+' strikes left.')
         failcount+=1
         guesslist+=guess
-      if failcount>0:
-        print('  x x  ')
-      if failcount>1:
-        print('   n  ')
-      if failcount>2:
-        print(' \\_|_/ ')
-      if failcount>3:
-        print('   |  ')
-      if failcount>4:
-        print('  / \\ ')
-      if failcount>5:
-        print(' d   b ')
-      if failcount>6:
-        print('GAME OVER....the secret word was: '+secret+'.')
-        break
+    if failcount==0:
+      print(('\n')*6)
+    if failcount==1:
+      print('  x x  '+('\n'*5))
+    if failcount==2:
+      print('  x x  ')
+      print('   n  '+('\n'*4))
+    if failcount==3:
+      print('  x x  ')
+      print('   n  ')
+      print(' \\_|_/ '+('\n'*3))
+    if failcount==4:
+      print('  x x  ')
+      print('   n  ')
+      print(' \\_|_/ ')
+      print('   |  '+('\n'*2))
+    if failcount==5:
+      print('  x x  ')
+      print('   n  ')
+      print(' \\_|_/ ')
+      print('   |  ')
+      print('  / \\ '+'\n')
+    if failcount==6:
+      print('  x x  ')
+      print('   n  ')
+      print(' \\_|_/ ')
+      print('   |  ')
+      print('  / \\ ')
+      print(' d   b ')
+      print('GAME OVER....the secret word was: '+secret+'.')
+      break
 
   play_again=input("Play again? y/n: ")
   if play_again!='y':
