@@ -23,6 +23,7 @@ while True:
   blank='*'*(len(secret)-1)
 
   while True:
+    guesslist.sort()
     print(('\n')*5)
     print(blank)
     print('You have guessed: %s'%guesslist)
@@ -38,12 +39,13 @@ while True:
 
     if guess in guesslist and secret:
       print('You already guessed '+guess+'.')
+      continue
 
     if guess in secret:
+      guesslist+=guess
       for i in range(len(secret)):
         if guess==secret[i]:
           blank=blank[:i]+secret[i]+blank[i+1:]
-          guesslist+=guess
           donecount+=1  
       if donecount==(len(secret)-1):
         print('YOU WIN!!!')
