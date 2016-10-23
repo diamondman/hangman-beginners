@@ -60,17 +60,16 @@ def is_guess_valid(guess, secret, guesslist):
   if guess in guesslist and secret:
     print('You already guessed %s.'%guess)
     return False
-  
+
   return True
 
 def hangman():
   while True:
-    secret = choice(words)
+    secret = choice(words).strip()
     guesslist = []
     failcount = 0
     donecount = 0
     blank ='*'*len(secret)
-    
     while True:
       guesslist.sort()
       show_hangman(failcount)
@@ -78,17 +77,17 @@ def hangman():
       print('You have guessed: %s'%guesslist)
       print('You have %s strikes left.'%(5-failcount))
       guess=input("Guess a letter: ").lower()
-      
+
       if not is_guess_valid(guess, secret, guesslist):
         continue
-  
+
       guesslist += guess
 
       if guess in secret:
         for i in range(len(secret)):
           if guess == secret[i]:
             blank = blank[:i] + secret[i] + blank[i+1:]
-            donecount+=1  
+            donecount+=1
       else:
         print('Nope! %s strikes left,' % (5-failcount))
         failcount += 1
